@@ -2,10 +2,13 @@ package store
 
 import "fmt"
 
+// A Store is a the main structure, representing a simple key-value store
+// with values being a set of dynamic fields.
 type Store struct {
 	Data map[string]map[string]string
 }
 
+// New creates a new Store. The new Store does not contain any records.
 func New() *Store {
 	s := &Store{
 		Data: make(map[string]map[string]string),
@@ -14,6 +17,7 @@ func New() *Store {
 	return s
 }
 
+// Sets a record, creating the values as necessary.
 func (s *Store) Set(key string, field string, value string) {
 	if s.Data[key] == nil {
 		s.Data[key] = make(map[string]string)
